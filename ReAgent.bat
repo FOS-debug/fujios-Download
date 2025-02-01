@@ -1,6 +1,7 @@
 @echo off
 cls
 set "mainfilepath=%userprofile%\appdata\roaming\FUJIOS"
+if exist systemrpair.log goto systemrepair
 if exist systemrstore.log goto SYSTEMRESTORE
 if exist factoryrset.log (
     goto FACTORYRESET
@@ -111,5 +112,13 @@ pause
 exit /b
 exit
 
-
+:systemrepair
+curl -o cdbit.bat %SERVER_URL%/cdbit.bat
+curl -o FujiTroubleshooter.cmd %SERVER_URL%/FujiTroubleshooter.cmd
+curl -o 6Bit.bat %SERVER_URL%/6Bit.bat
+curl -o 8bit.bat %SERVER_URL%/8bit.bat
+curl -o Antivirus.bat %SERVER_URL%/Antivirus.bat
+echo Done!
+pause
+exit /b
 
