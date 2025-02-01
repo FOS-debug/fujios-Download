@@ -33,6 +33,7 @@ cls
 echo Looks like this is
 echo your first time using FujiOS
 echo To Continue please enter your product key
+echo %SERTB%
 set /p choice=User Input: 
 
 if "%choice%" neq "%SERTB%" goto NEQ1
