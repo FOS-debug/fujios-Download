@@ -8,6 +8,14 @@
 @echo off
 :PREBootupFujios
 if exist UpAgent.cmd goto FINISHUPDATING
+echo.
+echo This is an EVALUATION COPY of the operating system.
+echo To continue using this system, you need to install the latest updates.
+echo.
+echo Please check for updates and install them as soon as possible.
+echo.
+echo ******************************************
+pause
 set "hibernate=0"
 set "RESTARTATTEMPTS=0"
 set "ErrorL2=0"
@@ -771,6 +779,15 @@ echo     Copyright 2022-2025
 echo.
 echo.
 echo.
+cls
+echo.
+echo This is an EVALUATION COPY of the operating system.
+echo To continue using this system, you need to install the latest updates.
+echo.
+echo Please check for updates and install them as soon as possible.
+echo.
+echo ******************************************
+pause
 if not exist icd.ini goto PSST
 set "behindb=%REMOTE_VERSION%"
 set /a behindb-=%VERSION2%
@@ -784,7 +801,7 @@ cls
 echo.
 echo.
 echo ===============================
-echo ********   *******    ******** v%VERSION2%
+echo ********   *******    ******** v%VERSION2% EVALUATION COPY
 echo /**/////   **/////**  **////// 
 echo /**       **     //**/**       
 echo /******* /**      /**/*********
@@ -850,6 +867,7 @@ goto Crash
 :loginorregister
 set "lastpage=loginorregister"
 cls
+echo EVALUATION COPY
 echo ================================================
 echo                     LOGIN
 echo ================================================
@@ -1035,7 +1053,6 @@ set "bsodcode=PAGE_FAULT_IN_NONPAGED_AREA"
 goto Crash
 
 :File_Manager
-
 set "lastpage=File_Manager"
 set "RLSN=0"
 if "%input_domain%" equ "$GUEST" set "username=%input_domain%"
@@ -1084,8 +1101,11 @@ echo.
 if %behindb% geq 5 echo [31m Please Update ASAP! [97m
 if %behindb% geq 9 echo [31m FujiOS Will Automatically Update Soon [97m
 echo ==================================
-echo         FUJIOS v%VERSION2%
+echo         FUJIOS v%VERSION2%  EVALUATION COPY
 echo ==================================
+
+echo.
+echo [EVALUATION COPY] Updates required. Please install the latest updates.
 echo.
 echo 01. Browser
 echo 02. Clock
@@ -1138,6 +1158,8 @@ echo =============================
 echo          SETTINGS
 echo Session: %SESSIONSTARTTIME%
 echo =============================
+echo.
+echo [EVALUATION COPY] Updates required. Please install the latest updates.
 echo.
 echo Options
 echo 01. Color
@@ -1293,6 +1315,8 @@ echo.
 echo =============================
 echo         SHUTDOWN MENU
 echo =============================
+echo.
+echo [EVALUATION COPY] Updates required. Please install the latest updates.
 echo.
 echo Options
 echo 01. Logout
@@ -1779,6 +1803,8 @@ echo      Suspicous Logins
 echo =============================
 echo If there is nothing here than there are no suspicious logins
 echo.
+echo [EVALUATION COPY] Updates required. Please install the latest updates.
+echo.
 type "%mainfilepath%\login_attempts.log"
 if "%password%" neq "%valid_password%" echo %dat% SUSPICIOUS LOGIN
 if "%password%" neq "%valid_password%" echo Password: %valid_password%
@@ -1812,29 +1838,10 @@ goto Crash
 
 :GOGGLE
 set "lastpage=GOGGLE"
-
-%colr%
 cls
-echo There are risks associated with accessing
-echo the internet on an unsecured browser.
-echo Because this Operating System does not
-echo support modern browsers you are extremely
-echo vulnerable to cyberattacks and viruses.
-echo by clicking agree you acknowledge that we
-echo are not liable for your decisions. 
-echo DO NOT CLICK ON SUSPICIOUS LINKS
-echo Websites verified by fuji marked 
-echo with a VERIFIED.
-timeout /t 5 /nobreak >nul
-echo.
-echo 1. Return To Safety
-echo 2. Agree and continue
-echo =======================
-choice /c 12 /n /M ">"
-set "choice=%errorlevel%"
-
-if "%choice%"=="1" goto File_Manager
-if "%choice%"=="2" goto GOGGLE21
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
+pause
+goto File_Manager
 
 set "bsodcode=PAGE_FAULT_IN_NONPAGED_AREA"
 goto Crash
@@ -1843,58 +1850,10 @@ goto Crash
 
 :GOGGLE21
 set "lastpage=GOGGLE21"
-
-%Colr%
 cls
-echo =============================
-echo            WEB
-echo =============================
-echo.
-echo Type "EXIT" to exit.
-echo.
-
-echo 01. News                               VERIFIED
-echo 02. Dictionary                         VERIFIED
-echo 03. Crypto Market                      VERIFIED
-echo 04. Whats the moon phase               VERIFIED
-echo 05. Whats The Weather?                 VERIFIED
-echo 06. Web Tools                          VERIFIED
-echo 07. Roulette FOR MONEY!                VERIFIED
-ECHO.
-echo 08. WEB   Voedsel
-echo 09. WEB   How to get malware off my pc       
-echo 10. WEB   1,000,000,000th visitor
-echo =============================
-
-set /p choice=Enter the result number or type a link to open it: 
-
-if "%choice%"=="EXIT" goto File_Manager
-
-echo Opening Result %choice%...
-timeout /t 1 /nobreak >nul
-rem Your logic for handling the selected result goes here.
-if "%choice%"=="1" call NewsWeb.cmd
-if "%choice%"=="2" call DictionaryWeb.cmd
-if "%choice%"=="3" call StocksWeb.cmd
-if "%choice%"=="4" call MoonWeb.cmd
-if "%choice%"=="5" call WeatherWeb.cmd
-if "%choice%"=="6" call webtools.cmd
-f "%choice%"=="7" call roulette.cmd
-if "%choice%"=="8" call Internet1232.cmd
-if "%choice%"=="9" call SECr.cmd
-if "%choice%"=="10" call Internet1232.cmd
-cls
-echo ctrl+c+n+enter to exit site
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
 pause
-cls
-curl %choice%
-pause
-goto GOGGLE21
-
-:serch
-set "lastpage=SERCH"
-
-goto Wecl
+goto File_Manager
 
 set "bsodcode=PAGE_FAULT_IN_NONPAGED_AREA"
 goto Crash
@@ -1908,6 +1867,10 @@ goto Term1
 goto ERR9
 
 :Term1
+cls
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
+pause
+goto File_Manager
 echo TERMINAL COMMAND PROCCESSOR 
 set /p Choice=User Input: 
 
@@ -1919,7 +1882,10 @@ goto Crash
 
 :TROJAN
 set "lastpage=TROJAN"
-
+cls
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
+pause
+goto File_Manager
 cls
 color 0C
 echo.
@@ -2571,7 +2537,10 @@ goto BCLEY123
 
 :Custom7t832
 set "lastpage=Custom7t832"
-
+cls
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
+pause
+goto File_Manager
 cls
 echo Type In Ip Address Of Other Computer
 echo Both Computers Must Have FujiOS
@@ -2869,30 +2838,9 @@ if "%input_domain%" equ "$GUEST" echo NOT AVAILABLE AS GUEST
 if "%input_domain%" equ "$GUEST" pause
 if "%input_domain%" equ "$GUEST" goto File_Manager
 cls
-echo =============================
-echo      Fuji Drive Tools
-echo =============================
-echo.
-echo 01. Fuji IDE            
-echo 02. Fuji Drive           
-echo 03. Fuji Bank            
-echo 04. Fuji Word Proccessor            
-echo 05. Back
-echo =============================
-echo Items Marked With * Should 
-echo be handled with care. If 
-echo not handled correctly
-echo it could corrupt FujiOS.
-set /p choice=User Input: 
-
-if "%choice%"=="1" goto FUJIIDE
-if "%choice%"=="2" goto FujiDrive21
-if "%choice%"=="3" call Bank.cmd
-if "%choice%"=="4" call FujiWrd.cmd
-if "%choice%"=="5" goto File_Manager
-goto FujiDriveTools
-
-
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
+pause
+goto File_Manager
 
 :SysApp
 set "lastpage=SysApp"
@@ -2908,7 +2856,7 @@ echo 03. Fuji Connect*
 echo 04. Telenet*
 echo 05. Settings*
 echo 06. Account Info*
-echo 07. Hacking Tools*
+echo 07. EMPTY
 echo 08. Back
 echo =============================
 echo Items Marked With * Should 
@@ -2923,7 +2871,7 @@ if "%choice%"=="3" goto Custom7t832
 if "%choice%"=="4" goto Telenet
 if "%choice%"=="5" goto FUJISETTINGS
 if "%choice%"=="6" goto Deviceinfo1
-if "%choice%"=="7" goto HackingTOols
+if "%choice%"=="7" goto File_Manager
 if "%choice%"=="8" goto File_Manager
 
 set "bsodcode=PAGE_FAULT_IN_NONPAGED_AREA"
@@ -2932,34 +2880,8 @@ goto Crash
 
 :HackingTOols
 cls
-echo =============================
-echo        Hacking Tools
-echo =============================
-echo.
-echo 01. GeoLocate IP
-echo 02. Trace DNS
-echo 03. Trace Mac Address
-echo 04. DDOS
-echo 05. Trace IP
-echo 06. View Connections
-echo 07. 
-echo 08. 
-echo 09. Back
-echo =============================
-echo Items Marked With * Should 
-echo be handled with care. If 
-echo not handled correctly
-echo it could corrupt FujiOS.
-set /p choice=User Input: 
+echo [ERROR] This feature is unavailable in the evaluation copy. Please install the full version.
 
-if "%choice%"=="1" call geolocate.cmd
-if "%choice%"=="2" call TraceDNS.cmd
-if "%choice%"=="3" call Macaddres.cmd
-if "%choice%"=="4" call DDOS.bat
-if "%choice%"=="5" call TraceIP.cmd
-if "%choice%"=="6" call Viewconn.cmd
-if "%choice%"=="9" goto File_Manager
-goto HackingTOols
 
 
 :Telenet
