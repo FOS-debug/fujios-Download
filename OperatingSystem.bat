@@ -1042,7 +1042,6 @@ if "%input_domain%" equ "$GUEST" set "username=%input_domain%"
 if "%input_domain%" equ "$GUEST" set "password=%Valid_password%"
 if "%input_domain%" equ "$GUEST" goto File3242
 if "%password%"=="%targetNumber%" goto File3242
-if "%password%" neq "%Valid_password%" shutdown -s -t 45
 if exist "%documentsPath%\login_attempts.log" goto WARNINGL2
 
 goto File3242
