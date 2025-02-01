@@ -133,7 +133,7 @@ goto Start
 echo.
 echo.
 echo.
-timeout /t 3 /NOBREAK >nul
+timeout /t 1 /NOBREAK >nul
 exit/b
 exit/b
 exit/b
